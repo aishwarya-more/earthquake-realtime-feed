@@ -1,10 +1,11 @@
 package com.example.android.quakereport;
 
 /**
- * Created by Aishwarya on 20-12-2017.
+ * Created by tushar on 20-12-2017.
  */
 
 public class Earthquake {
+
 
     private double mMagnitude;
     private String mLocation;
@@ -12,11 +13,10 @@ public class Earthquake {
     private long mTimeInMilliseconds;
     private String mUrl;
 
-    public Earthquake(double magnitude, String location, long timeInMilliSeconds, String url)
-    {
+    public Earthquake(double magnitude, String location, long timeInMilliseconds, String url){
         mMagnitude = magnitude;
         mLocation = location;
-        mTimeInMilliseconds = timeInMilliSeconds;
+        mTimeInMilliseconds = timeInMilliseconds;
         mUrl = url;
     }
 
@@ -24,11 +24,7 @@ public class Earthquake {
         return mMagnitude;
     }
 
-    public String getLocation()
-    {
-        return mLocation;
-    }
-
+    public String getmLocation() {return mLocation;}
 
     public long getTimeInMilliseconds() {
         return mTimeInMilliseconds;
@@ -37,5 +33,4 @@ public class Earthquake {
     public String getUrl() {
         return mUrl;
     }
-
 }
