@@ -34,10 +34,13 @@ import android.app.LoaderManager.LoaderCallbacks;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.widget.TextView;
 
 public class EarthquakeActivity extends AppCompatActivity implements LoaderCallbacks<List<Earthquake>> {
 
     private EarthquakeAdapter mAdapter;
+    /** TextView that is displayed when the list is empty */
+    private TextView mEmptyStateTextView;
     private static final int EARTHQUAKE_LOADER_ID = 1;
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
     private static final String USGS_REQUEST_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&minmag=6&limit=10";
@@ -96,6 +99,10 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
         // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
         // because this activity implements the LoaderCallbacks interface).
         loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
+
+        mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
+        earthquakeListView.setEmptyView(mEmptyStateTextView);
+
     }
 
     @Override
@@ -113,6 +120,8 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderCallb
         if (earthquakes != null && !earthquakes.isEmpty()) {
             mAdapter.addAll(earthquakes);
         }
+
+        mEmptyStateTextView.setText(R.string.no_earthquakes);
     }
 
     @Override
